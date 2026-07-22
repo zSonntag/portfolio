@@ -1,6 +1,2 @@
 @use "styles/theme";
-
-body {
-  background-color: var(--color-bg);
-  color: var(--color-text-primary);
-}
+@use "styles/base";
