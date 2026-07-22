@@ -1,0 +1,86 @@
+@use "palette" as p;
+
+@mixin light-theme {
+  --color-bg: #{p.$slate-50};
+  --color-bg-elevated: #{p.$slate-0};
+  --color-bg-inset: #{p.$slate-100};
+
+  --color-text-primary: #{p.$slate-900};
+  --color-text-secondary: #{p.$slate-600};
+  --color-text-muted: #{p.$slate-400};
+  --color-text-on-primary: #{p.$slate-0};
+
+  --color-border: #{p.$slate-200};
+  --color-border-strong: #{p.$slate-300};
+
+  --color-primary: #{p.$indigo-600};
+  --color-primary-hover: #{p.$indigo-700};
+  --color-primary-active: #{p.$indigo-700};
+
+  --color-link: #{p.$indigo-600};
+  --color-link-hover: #{p.$indigo-700};
+
+  --color-success: #{p.$emerald-600};
+  --color-warning: #{p.$amber-600};
+  --color-danger: #{p.$rose-600};
+  --color-info: #{p.$sky-600};
+
+  --color-focus-ring: #{rgba(p.$indigo-500, 0.5)};
+  --color-shadow: #{rgba(p.$slate-900, 0.12)};
+  --color-overlay: #{rgba(p.$slate-900, 0.5)};
+}
+
+@mixin dark-theme {
+  --color-bg: #{p.$slate-950};
+  --color-bg-elevated: #{p.$slate-900};
+  --color-bg-inset: #{p.$slate-800};
+
+  --color-text-primary: #{p.$slate-50};
+  --color-text-secondary: #{p.$slate-300};
+  --color-text-muted: #{p.$slate-500};
+  --color-text-on-primary: #{p.$slate-0};
+
+  --color-border: #{p.$slate-700};
+  --color-border-strong: #{p.$slate-600};
+
+  // Lighter indigo tones improve contrast on dark backgrounds.
+  --color-primary: #{p.$indigo-500};
+  --color-primary-hover: #{p.$indigo-400};
+  --color-primary-active: #{p.$indigo-400};
+
+  --color-link: #{p.$indigo-400};
+  --color-link-hover: #{p.$indigo-300};
+
+  --color-success: #{p.$emerald-500};
+  --color-warning: #{p.$amber-500};
+  --color-danger: #{p.$rose-500};
+  --color-info: #{p.$sky-500};
+
+  --color-focus-ring: #{rgba(p.$indigo-400, 0.5)};
+  --color-shadow: #{rgba(black, 0.6)};
+  --color-overlay: #{rgba(black, 0.7)};
+}
+
+:root {
+  color-scheme: light dark;
+
+  @include light-theme;
+}
+
+// Apply the system theme only when no theme was selected manually.
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    color-scheme: dark;
+    @include dark-theme;
+  }
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+  @include light-theme;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  @include dark-theme;
+}
