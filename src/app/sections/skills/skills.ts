@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+
+import { LanguageService } from '../../core/i18n/language.service';
 
 @Component({
   selector: 'app-skills',
@@ -6,4 +8,8 @@ import { Component } from '@angular/core';
   templateUrl: './skills.html',
   styleUrl: './skills.scss',
 })
-export class Skills {}
+export class Skills {
+  private readonly languageService = inject(LanguageService);
+
+  readonly t = this.languageService.translations;
+}

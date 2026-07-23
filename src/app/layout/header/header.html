@@ -1,8 +1,27 @@
 <header>
   <nav class="container">
-    <a href="#about">About</a>
-    <a href="#experience">Experience</a>
-    <a href="#skills">Skills</a>
-    <a href="#contact">Contact</a>
+    <a href="#about">{{ t().nav.about }}</a>
+    <a href="#experience">{{ t().nav.experience }}</a>
+    <a href="#skills">{{ t().nav.skills }}</a>
+    <a href="#contact">{{ t().nav.contact }}</a>
   </nav>
+
+  <div class="language-switcher container" role="group" [attr.aria-label]="t().languageSwitcher.groupLabel">
+    <button
+      type="button"
+      [attr.aria-pressed]="language() === 'de'"
+      [attr.aria-label]="t().languageSwitcher.german"
+      (click)="setLanguage('de')"
+    >
+      DE
+    </button>
+    <button
+      type="button"
+      [attr.aria-pressed]="language() === 'en'"
+      [attr.aria-label]="t().languageSwitcher.english"
+      (click)="setLanguage('en')"
+    >
+      EN
+    </button>
+  </div>
 </header>
