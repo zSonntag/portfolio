@@ -9,6 +9,12 @@ export interface Translations {
   };
   hero: {
     role: string;
+    heading: string;
+    introduction: string;
+    experienceAction: string;
+    contactAction: string;
+    githubLabel: string;
+    linkedinLabel: string;
   };
   about: {
     heading: string;
@@ -39,6 +45,13 @@ export const TRANSLATIONS: Record<Language, Translations> = {
     },
     hero: {
       role: 'Junior Software Developer',
+      heading: "Hi, I'm Conner Klee.",
+      introduction:
+        'I build modern web applications with Angular and TypeScript and am currently strengthening my backend skills with Java and Spring Boot.',
+      experienceAction: 'View Experience',
+      contactAction: 'Contact Me',
+      githubLabel: 'GitHub',
+      linkedinLabel: 'LinkedIn',
     },
     about: {
       heading: 'About',
@@ -67,6 +80,13 @@ export const TRANSLATIONS: Record<Language, Translations> = {
     },
     hero: {
       role: 'Junior Softwareentwickler',
+      heading: 'Hallo, ich bin Conner Klee.',
+      introduction:
+        'Ich entwickle moderne Webanwendungen mit Angular und TypeScript und erweitere aktuell meine Backend-Kenntnisse mit Java und Spring Boot.',
+      experienceAction: 'Berufserfahrung ansehen',
+      contactAction: 'Kontakt aufnehmen',
+      githubLabel: 'GitHub',
+      linkedinLabel: 'LinkedIn',
     },
     about: {
       heading: 'Über mich',

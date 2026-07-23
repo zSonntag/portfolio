@@ -1,3 +1,93 @@
 section {
-  padding-block: 4rem;
+  padding-block: clamp(5rem, 10vh, 8rem);
+}
+
+.hero__panel {
+  max-width: 52rem;
+}
+
+.hero__role {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  background-color: var(--color-bg-inset);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  color: var(--color-text-secondary);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.hero__heading {
+  margin-top: 1.5rem;
+  font-size: clamp(2.75rem, 5vw, 4.75rem);
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.hero__intro {
+  margin-top: 1.25rem;
+  max-width: 40rem;
+  color: var(--color-text-secondary);
+  font-size: 1.0625rem;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2.5rem;
+}
+
+.hero__button {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.hero__button--primary {
+  background-color: var(--color-primary);
+  color: var(--color-text-on-primary);
+}
+
+.hero__button--primary:hover {
+  background-color: var(--color-primary-hover);
+  color: var(--color-text-on-primary);
+}
+
+.hero__button--secondary {
+  background-color: transparent;
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border-strong);
+}
+
+.hero__button--secondary:hover {
+  background-color: var(--color-bg-inset);
+  color: var(--color-text-primary);
+}
+
+.hero__social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin-top: 2rem;
+}
+
+.hero__social a {
+  color: var(--color-text-secondary);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.hero__social a:hover {
+  color: var(--color-link-hover);
+}
+
+@media (max-width: 30rem) {
+  .hero__button {
+    width: 100%;
+    text-align: center;
+  }
 }
