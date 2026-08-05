@@ -1,5 +1,16 @@
 <section id="about">
   <div class="container">
-    <h2>{{ t().about.heading }}</h2>
+    <div class="about__content">
+      <h2>{{ t().about.heading }}</h2>
+
+      <p class="about__text about__text--lead">{{ t().about.introduction }}</p>
+      <p class="about__text">{{ t().about.experience }}</p>
+      <p class="about__text">{{ t().about.interests }}</p>
+
+      <ul class="about__credentials" [attr.aria-label]="t().about.credentialsLabel">
+        <li>{{ t().about.diploma }}</li>
+        <li>{{ t().about.baccalaureate }}</li>
+      </ul>
+    </div>
   </div>
 </section>

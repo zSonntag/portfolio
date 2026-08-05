@@ -1,3 +1,44 @@
 section {
-  padding-block: 3rem;
+  padding-block: clamp(3.5rem, 6vw, 6rem);
+}
+
+.experience__card {
+  margin-top: 2rem;
+  max-width: 56rem;
+  padding: 2.25rem;
+  background-color: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem;
+}
+
+.experience__role {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.experience__company {
+  margin-top: 0.25rem;
+  color: var(--color-text-secondary);
+  font-weight: 600;
+}
+
+.experience__period {
+  margin-top: 0.125rem;
+  color: var(--color-text-secondary);
+  font-size: 0.9375rem;
+}
+
+.experience__points {
+  margin-top: 1.25rem;
+  padding-left: 1.25rem;
+  color: var(--color-text-secondary);
+}
+
+.experience__points li {
+  margin-top: 0.5rem;
+}
+
+.experience__points li:first-child {
+  margin-top: 0;
 }

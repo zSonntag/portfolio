@@ -1,5 +1,15 @@
 <section id="contact">
   <div class="container">
     <h2>{{ t().contact.heading }}</h2>
+    <p class="contact__message">{{ t().contact.message }}</p>
+
+    <div class="contact__links">
+      <a [href]="githubUrl" target="_blank" rel="noopener noreferrer">{{
+        t().contact.githubLabel
+      }}</a>
+      <a [href]="linkedinUrl" target="_blank" rel="noopener noreferrer">{{
+        t().contact.linkedinLabel
+      }}</a>
+    </div>
   </div>
 </section>

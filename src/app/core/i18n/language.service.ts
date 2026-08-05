@@ -1,4 +1,5 @@
 import { Injectable, computed, effect, inject, signal } from '@angular/core';
+import { Meta, Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 
 import { DEFAULT_LANGUAGE, Language, isLanguage } from './language';
@@ -9,6 +10,8 @@ const STORAGE_KEY = 'language';
 @Injectable({ providedIn: 'root' })
 export class LanguageService {
   private readonly router = inject(Router);
+  private readonly meta = inject(Meta);
+  private readonly title = inject(Title);
   private readonly languageSignal = signal<Language>(DEFAULT_LANGUAGE);
 
   readonly language = this.languageSignal.asReadonly();
@@ -18,7 +21,21 @@ export class LanguageService {
     this.languageSignal.set(this.resolveInitialLanguage());
 
     effect(() => {
-      document.documentElement.lang = this.languageSignal();
+      const language = this.languageSignal();
+      const seo = this.translations().seo;
+
+      document.documentElement.lang = language;
+      this.title.setTitle(seo.title);
+      this.meta.updateTag({ name: 'description', content: seo.description });
+      this.meta.updateTag({ property: 'og:title', content: seo.title });
+      this.meta.updateTag({ property: 'og:description', content: seo.description });
+      this.meta.updateTag({ property: 'og:locale', content: seo.locale });
+      this.meta.updateTag({
+        property: 'og:locale:alternate',
+        content: language === 'de' ? 'en_US' : 'de_CH',
+      });
+      this.meta.updateTag({ name: 'twitter:title', content: seo.title });
+      this.meta.updateTag({ name: 'twitter:description', content: seo.description });
     });
   }
 
@@ -30,13 +47,15 @@ export class LanguageService {
     this.languageSignal.set(language);
     localStorage.setItem(STORAGE_KEY, language);
 
-    this.router.navigate([], {
-      queryParams: { lang: language },
-      queryParamsHandling: 'merge',
-      preserveFragment: true,
-      replaceUrl: true,
-    }).catch((error) => {
-      console.error('Failed to update URL with new language:', error);
+    this.router
+      .navigate([], {
+        queryParams: { lang: language },
+        queryParamsHandling: 'merge',
+        preserveFragment: true,
+        replaceUrl: true,
+      })
+      .catch((error) => {
+        console.error('Failed to update URL with new language:', error);
       });
   }
 

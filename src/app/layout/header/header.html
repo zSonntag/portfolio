@@ -2,29 +2,80 @@
   <div class="container header__inner">
     <a class="header__brand" href="#hero">Conner Klee</a>
 
-    <nav class="header__nav">
+    <nav class="header__nav" [attr.aria-label]="t().header.navLabel">
       <a href="#about">{{ t().nav.about }}</a>
       <a href="#experience">{{ t().nav.experience }}</a>
       <a href="#skills">{{ t().nav.skills }}</a>
       <a href="#contact">{{ t().nav.contact }}</a>
     </nav>
 
-    <div class="language-switcher" role="group" [attr.aria-label]="t().languageSwitcher.groupLabel">
+    <div class="header__controls">
+      <div
+        class="header__switcher"
+        role="group"
+        [attr.aria-label]="t().languageSwitcher.groupLabel"
+      >
+        <button
+          type="button"
+          [attr.aria-pressed]="language() === 'de'"
+          [attr.aria-label]="t().languageSwitcher.german"
+          (click)="setLanguage('de')"
+        >
+          DE
+        </button>
+        <button
+          type="button"
+          [attr.aria-pressed]="language() === 'en'"
+          [attr.aria-label]="t().languageSwitcher.english"
+          (click)="setLanguage('en')"
+        >
+          EN
+        </button>
+      </div>
+
       <button
         type="button"
-        [attr.aria-pressed]="language() === 'de'"
-        [attr.aria-label]="t().languageSwitcher.german"
-        (click)="setLanguage('de')"
+        class="header__theme-toggle"
+        role="switch"
+        [attr.aria-checked]="theme() === 'dark'"
+        [attr.aria-label]="
+          theme() === 'dark' ? t().themeSwitcher.switchToLight : t().themeSwitcher.switchToDark
+        "
+        (click)="toggleTheme()"
       >
-        DE
-      </button>
-      <button
-        type="button"
-        [attr.aria-pressed]="language() === 'en'"
-        [attr.aria-label]="t().languageSwitcher.english"
-        (click)="setLanguage('en')"
-      >
-        EN
+        <span class="header__theme-toggle-track">
+          <span class="header__theme-toggle-thumb">
+            <svg
+              class="header__theme-toggle-icon header__theme-toggle-icon--sun"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.25"
+              stroke-linecap="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <circle cx="12" cy="12" r="4" />
+              <line x1="12" y1="2" x2="12" y2="4.5" />
+              <line x1="12" y1="19.5" x2="12" y2="22" />
+              <line x1="2" y1="12" x2="4.5" y2="12" />
+              <line x1="19.5" y1="12" x2="22" y2="12" />
+              <line x1="4.6" y1="4.6" x2="6.3" y2="6.3" />
+              <line x1="17.7" y1="17.7" x2="19.4" y2="19.4" />
+              <line x1="4.6" y1="19.4" x2="6.3" y2="17.7" />
+              <line x1="17.7" y1="6.3" x2="19.4" y2="4.6" />
+            </svg>
+            <svg
+              class="header__theme-toggle-icon header__theme-toggle-icon--moon"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <circle cx="12" cy="12" r="8" fill="currentColor" />
+              <circle cx="16" cy="9" r="7" class="header__theme-toggle-icon-mask" />
+            </svg>
+          </span>
+        </span>
       </button>
     </div>
   </div>

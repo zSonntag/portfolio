@@ -1,4 +1,4 @@
-@use "palette" as p;
+@use 'palette' as p;
 
 @mixin light-theme {
   --color-bg: #{p.$slate-50};
@@ -12,6 +12,7 @@
 
   --color-border: #{p.$slate-200};
   --color-border-strong: #{p.$slate-300};
+  --color-control-border: #{p.$slate-600};
 
   --color-primary: #{p.$indigo-600};
   --color-primary-hover: #{p.$indigo-700};
@@ -25,7 +26,7 @@
   --color-danger: #{p.$rose-600};
   --color-info: #{p.$sky-600};
 
-  --color-focus-ring: #{rgba(p.$indigo-500, 0.5)};
+  --color-focus-ring: #{p.$indigo-700};
   --color-shadow: #{rgba(p.$slate-900, 0.12)};
   --color-overlay: #{rgba(p.$slate-900, 0.5)};
 }
@@ -42,11 +43,11 @@
 
   --color-border: #{p.$slate-700};
   --color-border-strong: #{p.$slate-600};
+  --color-control-border: #{p.$slate-400};
 
-  // Lighter indigo tones improve contrast on dark backgrounds.
-  --color-primary: #{p.$indigo-500};
-  --color-primary-hover: #{p.$indigo-400};
-  --color-primary-active: #{p.$indigo-400};
+  --color-primary: #{p.$indigo-600};
+  --color-primary-hover: #{p.$indigo-700};
+  --color-primary-active: #{p.$indigo-700};
 
   --color-link: #{p.$indigo-400};
   --color-link-hover: #{p.$indigo-300};
@@ -56,7 +57,7 @@
   --color-danger: #{p.$rose-500};
   --color-info: #{p.$sky-500};
 
-  --color-focus-ring: #{rgba(p.$indigo-400, 0.5)};
+  --color-focus-ring: #{p.$indigo-300};
   --color-shadow: #{rgba(black, 0.6)};
   --color-overlay: #{rgba(black, 0.7)};
 }
@@ -75,12 +76,12 @@
   }
 }
 
-:root[data-theme="light"] {
+:root[data-theme='light'] {
   color-scheme: light;
   @include light-theme;
 }
 
-:root[data-theme="dark"] {
+:root[data-theme='dark'] {
   color-scheme: dark;
   @include dark-theme;
 }

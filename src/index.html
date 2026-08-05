@@ -1,10 +1,39 @@
 <!doctype html>
-<html lang="en">
+<html lang="de">
   <head>
     <meta charset="utf-8" />
-    <title>Portfolio</title>
+    <script>
+      (function () {
+        var theme = localStorage.getItem('theme');
+        if (theme === 'light' || theme === 'dark') {
+          document.documentElement.setAttribute('data-theme', theme);
+        }
+      })();
+    </script>
+    <title>Conner Klee | Junior Softwareentwickler</title>
     <base href="/" />
+    <link rel="canonical" href="https://connerklee.dev/" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Portfolio von Conner Klee, Junior Softwareentwickler aus der Schweiz mit praktischer Erfahrung in Angular, TypeScript, Node.js und REST APIs."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://connerklee.dev/" />
+    <meta property="og:site_name" content="Conner Klee Portfolio" />
+    <meta property="og:title" content="Conner Klee | Junior Softwareentwickler" />
+    <meta
+      property="og:description"
+      content="Portfolio von Conner Klee, Junior Softwareentwickler aus der Schweiz mit praktischer Erfahrung in Angular, TypeScript, Node.js und REST APIs."
+    />
+    <meta property="og:locale" content="de_CH" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Conner Klee | Junior Softwareentwickler" />
+    <meta
+      name="twitter:description"
+      content="Portfolio von Conner Klee, Junior Softwareentwickler aus der Schweiz mit praktischer Erfahrung in Angular, TypeScript, Node.js und REST APIs."
+    />
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
   </head>
   <body>

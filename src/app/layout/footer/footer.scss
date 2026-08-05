@@ -1,3 +1,28 @@
 footer {
   padding-block: 1.5rem;
+  background-color: var(--color-bg-elevated);
+  border-top: 1px solid var(--color-border);
+}
+
+.footer__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1.5rem;
+}
+
+.footer__inner p {
+  color: var(--color-text-secondary);
+  font-size: 0.9375rem;
+}
+
+.footer__top {
+  color: var(--color-text-secondary);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.footer__top:hover {
+  color: var(--color-link-hover);
 }

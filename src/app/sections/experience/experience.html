@@ -1,5 +1,19 @@
 <section id="experience">
   <div class="container">
     <h2>{{ t().experience.heading }}</h2>
+
+    <article class="experience__card">
+      <div class="experience__header">
+        <h3 class="experience__role">{{ t().experience.role }}</h3>
+        <p class="experience__company">{{ t().experience.company }}</p>
+        <p class="experience__period">{{ t().experience.period }}</p>
+      </div>
+
+      <ul class="experience__points">
+        @for (point of t().experience.points; track point) {
+          <li>{{ point }}</li>
+        }
+      </ul>
+    </article>
   </div>
 </section>

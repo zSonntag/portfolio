@@ -1,5 +1,37 @@
 <section id="skills">
   <div class="container">
     <h2>{{ t().skills.heading }}</h2>
+
+    <div class="skills__grid">
+      <div class="skills__card">
+        <h3 class="skills__group-heading">{{ t().skills.practicalHeading }}</h3>
+        <p class="skills__group-description">{{ t().skills.practicalDescription }}</p>
+        <ul class="skills__badges">
+          @for (item of t().skills.practicalItems; track item) {
+            <li>{{ item }}</li>
+          }
+        </ul>
+      </div>
+
+      <div class="skills__card">
+        <h3 class="skills__group-heading">{{ t().skills.infrastructureHeading }}</h3>
+        <p class="skills__group-description">{{ t().skills.infrastructureDescription }}</p>
+        <ul class="skills__badges">
+          @for (item of t().skills.infrastructureItems; track item) {
+            <li>{{ item }}</li>
+          }
+        </ul>
+      </div>
+
+      <div class="skills__card">
+        <h3 class="skills__group-heading">{{ t().skills.learningHeading }}</h3>
+        <p class="skills__group-description">{{ t().skills.learningDescription }}</p>
+        <ul class="skills__badges">
+          @for (item of t().skills.learningItems; track item) {
+            <li>{{ item }}</li>
+          }
+        </ul>
+      </div>
+    </div>
   </div>
 </section>

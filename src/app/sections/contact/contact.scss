@@ -1,3 +1,26 @@
 section {
-  padding-block: 3rem;
+  padding-block: clamp(3.5rem, 6vw, 6rem);
+}
+
+.contact__message {
+  margin-top: 1.25rem;
+  max-width: 46rem;
+  color: var(--color-text-secondary);
+  font-size: 1.0625rem;
+}
+
+.contact__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin-top: 2rem;
+}
+
+.contact__links a {
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.contact__links a:hover {
+  color: var(--color-link-hover);
 }

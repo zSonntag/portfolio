@@ -2,17 +2,28 @@
   <div class="container">
     <div class="hero__panel">
       <p class="hero__role">{{ t().hero.role }}</p>
-      <h1 class="hero__heading">{{ t().hero.heading }}</h1>
+      <h1 class="hero__heading">
+        <span class="hero__heading-line">{{ t().hero.headingIntro }}</span>
+        <span class="hero__heading-name">{{ t().hero.headingName }}</span>
+      </h1>
       <p class="hero__intro">{{ t().hero.introduction }}</p>
 
       <div class="hero__actions">
-        <a class="hero__button hero__button--primary" href="#experience">{{ t().hero.experienceAction }}</a>
-        <a class="hero__button hero__button--secondary" href="#contact">{{ t().hero.contactAction }}</a>
+        <a class="hero__button hero__button--primary" href="#experience">{{
+          t().hero.experienceAction
+        }}</a>
+        <a class="hero__button hero__button--secondary" href="#contact">{{
+          t().hero.contactAction
+        }}</a>
       </div>
 
       <div class="hero__social">
-        <a [href]="githubUrl" target="_blank" rel="noopener noreferrer">{{ t().hero.githubLabel }}</a>
-        <a [href]="linkedinUrl" target="_blank" rel="noopener noreferrer">{{ t().hero.linkedinLabel }}</a>
+        <a [href]="githubUrl" target="_blank" rel="noopener noreferrer">{{
+          t().hero.githubLabel
+        }}</a>
+        <a [href]="linkedinUrl" target="_blank" rel="noopener noreferrer">{{
+          t().hero.linkedinLabel
+        }}</a>
       </div>
     </div>
   </div>

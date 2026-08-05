@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 
+import { LanguageService } from './core/i18n/language.service';
 import { Header } from './layout/header/header';
 import { Footer } from './layout/footer/footer';
 import { Hero } from './sections/hero/hero';
@@ -14,4 +15,8 @@ import { Contact } from './sections/contact/contact';
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
-export class App {}
+export class App {
+  private readonly languageService = inject(LanguageService);
+
+  readonly t = this.languageService.translations;
+}

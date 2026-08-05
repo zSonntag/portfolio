@@ -1,59 +1,40 @@
-# Portfolio
+# Portfolio von Conner Klee
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.0.7.
+Persönliches und responsives One-Page-Portfolio mit Informationen zu meiner Ausbildung,
+praktischen Erfahrung, technischen Kenntnissen und aktuellen Lernschwerpunkten.
 
-## Development server
+Die Website ist auf Deutsch und Englisch verfügbar und unterstützt einen persistenten
+Light- und Dark-Mode.
 
-To start a local development server, run:
+## Funktionen
 
-```bash
-ng serve
-```
+- Responsive One-Page-Anwendung
+- Inhalte auf Deutsch und Englisch
+- Persistenter Light- und Dark-Mode
+- Strukturierte Darstellung von Erfahrung, Ausbildung und Kenntnissen
+- Kontaktbereich mit direkten Kontaktmöglichkeiten
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Tech Stack
 
-## Code scaffolding
+- Angular 22.0.7
+- TypeScript
+- Standalone Components
+- Angular Signals
+- SCSS mit semantischen Theme-Variablen
+- Nginx
+- Docker
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Lokale Voraussetzungen
 
-```bash
-ng generate component component-name
-```
+Für die lokale Entwicklung werden benötigt:
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+- Node.js 22
+- npm
 
-```bash
-ng generate --help
-```
+## Lokale Installation
 
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+Repository klonen und in den Projektordner wechseln:
 
 ```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+git clone https://github.com/zSonntag/portfolio.git
+cd portfolio
