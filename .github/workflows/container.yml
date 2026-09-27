@@ -1,0 +1,107 @@
+name: container
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+env:
+  IMAGE: ghcr.io/zsonntag/portfolio
+
+jobs:
+  verify:
+    name: Verify container contract
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+
+      - name: Build image
+        run: |
+          set -euo pipefail
+          docker build --pull \
+            --label "org.opencontainers.image.revision=${GITHUB_SHA}" \
+            -t portfolio:test .
+
+      - name: Verify non-root read-only runtime on port 8080
+        run: |
+          set -euo pipefail
+
+          cid="$(docker run -d \
+            --read-only \
+            --tmpfs /tmp:rw,noexec,nosuid,nodev,size=16m \
+            --cap-drop ALL \
+            --security-opt no-new-privileges:true \
+            portfolio:test)"
+          trap 'docker rm -f "$cid" >/dev/null 2>&1 || true' EXIT
+
+          test "$(docker exec "$cid" id -u)" = "101"
+
+          ready=0
+          for _ in $(seq 1 20); do
+            if docker exec "$cid" wget -q -O /dev/null -T 2 http://127.0.0.1:8080/; then
+              ready=1
+              break
+            fi
+            sleep 1
+          done
+          test "$ready" = "1"
+
+          docker exec "$cid" wget -q -O /dev/null -T 2 http://127.0.0.1:8080/
+          test "$(docker inspect -f '{{.State.Status}}' "$cid")" = "running"
+
+  publish:
+    name: Publish GHCR image
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: verify
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+
+      - name: Login to GHCR
+        run: |
+          set -euo pipefail
+          echo "${{ secrets.GITHUB_TOKEN }}" \
+            | docker login ghcr.io -u "${{ github.actor }}" --password-stdin
+
+      - name: Build and push immutable image
+        run: |
+          set -euo pipefail
+
+          docker build --pull \
+            --label "org.opencontainers.image.revision=${GITHUB_SHA}" \
+            -t "$IMAGE:$GITHUB_SHA" \
+            -t "$IMAGE:latest" .
+
+          docker push "$IMAGE:$GITHUB_SHA"
+          docker push "$IMAGE:latest"
+
+          digest="$(
+            docker buildx imagetools inspect "$IMAGE:$GITHUB_SHA" \
+              | awk '/^Digest:/ { print $2; exit }'
+          )"
+
+          case "$digest" in
+            sha256:[0-9a-f][0-9a-f]*) ;;
+            *)
+              echo "Could not resolve pushed image digest: $digest" >&2
+              exit 1
+              ;;
+          esac
+
+          {
+            echo "### Published container"
+            echo
+            echo "\`$IMAGE@$digest\`"
+            echo
+            echo "Source commit: \`$GITHUB_SHA\`"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+          echo "Published $IMAGE@$digest"
